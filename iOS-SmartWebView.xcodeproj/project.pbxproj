@@ -414,7 +414,7 @@
 			defaultConfigurationName = Release;
 		};
 		8F0C92632E2822C30043A6D9 /* Build configuration list for PBXNativeTarget "Monochrome" */ = {
-			isa = XCConfigurationList;
+			isa = XCBuildConfigurationList;
 			buildConfigurations = (
 				8F0C92642E2822C30043A6D9 /* Debug */,
 				8F0C92652E2822C30043A6D9 /* Release */,
