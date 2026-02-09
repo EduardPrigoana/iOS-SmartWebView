@@ -26,11 +26,7 @@ class Playground: PluginInterface {
     
     // Runs automated tests/actions on launch.
     private func runDiagnostics() {
-        if let firebasePlugin = PluginManager.shared.getPlugin(named: "Firebase") as? FirebasePlugin {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                firebasePlugin.showTestNotification()
-            }
-        }
+        // Diagnostics disabled - Firebase removed
     }
     
     // Injects the floating UI into the web page.
@@ -38,10 +34,7 @@ class Playground: PluginInterface {
         // Create a JSON object of active plugins.
         let pluginStatus = """
         {
-          "Toast": \(PluginManager.shared.getPlugin(named: "Toast") != nil),
-          "Dialog": \(PluginManager.shared.getPlugin(named: "Dialog") != nil),
-          "Location": \(PluginManager.shared.getPlugin(named: "Location") != nil),
-          "Firebase": \(PluginManager.shared.getPlugin(named: "Firebase") != nil)
+          "Toast": \(PluginManager.shared.getPlugin(named: "Toast") != nil)
         }
         """
         
@@ -65,9 +58,7 @@ class Playground: PluginInterface {
           toggleBtn.onclick = () => { panel.classList.toggle('visible'); };
           
           const buttons = [
-          { text: 'Show Toast', action: `window.Toast.show('Hello from Playground!')`, plugin: 'Toast' },
-          { text: 'Show Dialog', action: `window.Dialog.show({ title: 'Test', message: 'This is a native dialog.' }, res => console.log('Dialog result: ' + res))`, plugin: 'Dialog' },
-          { text: 'Get Location', action: `window.SWVLocation.getCurrentPosition((lat, lng, err) => { if(err) { window.Dialog.show({title: 'Location Error', message: err}); } else { window.Dialog.show({title: 'Location Success', message: 'Lat: ' + lat + ', Lng: ' + lng}); } })`, plugin: 'Location' }
+          { text: 'Show Toast', action: `window.Toast.show('Hello from Playground!')`, plugin: 'Toast' }
           ];
           
           buttons.forEach(btnInfo => {

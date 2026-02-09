@@ -18,14 +18,6 @@ class URLHandler {
             return true // We handled it.
         }
         
-        // Handle FCM test notifications
-        if url.scheme == "fcm" {
-            if let firebasePlugin = PluginManager.shared.getPlugin(named: "Firebase") as? FirebasePlugin {
-                firebasePlugin.showTestNotification()
-            }
-            return true // We handled it.
-        }
-
         if urlString.starts(with: "share:") {
             let textToShare = urlString.replacingOccurrences(of: "share:", with: "")
             let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
