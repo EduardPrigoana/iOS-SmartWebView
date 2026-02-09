@@ -110,15 +110,8 @@ struct WebView: UIViewRepresentable {
         // MARK: - Popup Support
         
         func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-            // Handle popup windows - check if external first
+            // Handle popup windows - always open in-app
             if let url = navigationAction.request.url {
-                let context = SWVContext.shared
-                // Check if it's an external URL that should open in Safari
-                if context.openExternalURLs, let host = url.host, host != context.host, !context.externalURLExceptionList.contains(host) {
-                    UIApplication.shared.open(url)
-                    return nil
-                }
-                // Otherwise load in same webview
                 webView.load(URLRequest(url: url))
             }
             return nil
