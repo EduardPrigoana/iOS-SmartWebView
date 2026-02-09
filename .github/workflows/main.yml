@@ -11,15 +11,15 @@ jobs:
 
       - name: Build .ipa without signing
         run: |
-          xcodebuild -project YourApp.xcodeproj \
+          xcodebuild -project iOS-SmartWebView.xcodeproj \
             -scheme YourScheme \
             -configuration Release \
-            -archivePath $PWD/build/YourApp.xcarchive \
+            -archivePath $PWD/build/iOS-SmartWebView.xcarchive \
             CODE_SIGNING_ALLOWED=NO \
             clean archive
 
           xcodebuild -exportArchive \
-            -archivePath $PWD/build/YourApp.xcarchive \
+            -archivePath $PWD/build/iOS-SmartWebView.xcarchive \
             -exportPath $PWD/build/ipa \
             -exportOptionsPlist <(cat <<EOF
             <?xml version="1.0" encoding="UTF-8"?>
