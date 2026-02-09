@@ -11,34 +11,12 @@ jobs:
 
       - name: Build .ipa without signing
         run: |
-          xcodebuild -project iOS-SmartWebView.xcodeproj \
-            -scheme iOS-SmartWebView \
-            -configuration Release \
-            -archivePath $PWD/build/iOS-SmartWebView.xcarchive \
-            CODE_SIGNING_ALLOWED=NO \
-            clean archive
-
-          xcodebuild -exportArchive \
-            -archivePath $PWD/build/iOS-SmartWebView.xcarchive \
-            -exportPath $PWD/build/ipa \
-            -exportOptionsPlist <(cat <<EOF
-            <?xml version="1.0" encoding="UTF-8"?>
-            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-            <plist version="1.0">
-            <dict>
-              <key>method</key>
-              <string>development</string>
-              <key>signingStyle</key>
-              <string>automatic</string>
-              <key>compileBitcode</key>
-              <false/>
-            </dict>
-            </plist>
-            EOF
-            )
+          xcodebuild -project iOS-SmartWebView.xcodeproj -scheme iOS-SmartWebView -configuration Release -archivePath build/iOS-SmartWebView.xcarchive CODE_SIGNING_ALLOWED=NO clean archive
+          printf '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict>\n<key>method</key>\n<string>development</string>\n<key>signingStyle</key>\n<string>manual</string>\n<key>compileBitcode</key>\n<false/>\n</dict>\n</plist>\n' > ExportOptions.plist
+          xcodebuild -exportArchive -archivePath build/iOS-SmartWebView.xcarchive -exportPath build/ipa -exportOptionsPlist ExportOptions.plist
 
       - name: Upload unsigned .ipa
         uses: actions/upload-artifact@v4
         with:
           name: UnsignedApp.ipa
-          path: build/ipa
+          path: build/ipa/*.ipa
