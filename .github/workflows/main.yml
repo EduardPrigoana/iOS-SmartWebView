@@ -1,0 +1,44 @@
+name: Build iOS .ipa (unsigned)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build .ipa without signing
+        run: |
+          xcodebuild -project YourApp.xcodeproj \
+            -scheme YourScheme \
+            -configuration Release \
+            -archivePath $PWD/build/YourApp.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            clean archive
+
+          xcodebuild -exportArchive \
+            -archivePath $PWD/build/YourApp.xcarchive \
+            -exportPath $PWD/build/ipa \
+            -exportOptionsPlist <(cat <<EOF
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <dict>
+              <key>method</key>
+              <string>development</string>
+              <key>signingStyle</key>
+              <string>automatic</string>
+              <key>compileBitcode</key>
+              <false/>
+            </dict>
+            </plist>
+            EOF
+            )
+
+      - name: Upload unsigned .ipa
+        uses: actions/upload-artifact@v3
+        with:
+          name: UnsignedApp.ipa
+          path: build/ipa
