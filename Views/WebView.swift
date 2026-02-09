@@ -80,9 +80,23 @@ struct WebView: UIViewRepresentable {
         }
         
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            if let url = navigationAction.request.url, URLHandler.handle(url: url, webView: webView) {
-                decisionHandler(.cancel)
-                return
+            if let url = navigationAction.request.url {
+                // Check if this is the popup returning to app domain (auth complete)
+                if webView === popupWebView {
+                    let context = SWVContext.shared
+                    if let host = url.host, host == context.host {
+                        // Auth complete - close popup and load in main webview
+                        closePopup()
+                        self.webView.load(URLRequest(url: url))
+                        decisionHandler(.cancel)
+                        return
+                    }
+                }
+                
+                if URLHandler.handle(url: url, webView: webView) {
+                    decisionHandler(.cancel)
+                    return
+                }
             }
             decisionHandler(.allow)
         }
@@ -108,13 +122,55 @@ struct WebView: UIViewRepresentable {
         }
         
         // MARK: - Popup Support
+        private var popupWebView: WKWebView?
+        private var popupNavigationController: UINavigationController?
         
         func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-            // Handle popup windows - always open in-app
-            if let url = navigationAction.request.url {
-                webView.load(URLRequest(url: url))
+            // Create a new webview for the popup (required for Firebase Auth)
+            let popupWebView = WKWebView(frame: .zero, configuration: configuration)
+            popupWebView.navigationDelegate = self
+            popupWebView.uiDelegate = self
+            self.popupWebView = popupWebView
+            
+            // Create a view controller to host the popup
+            let popupVC = UIViewController()
+            popupVC.view = popupWebView
+            popupVC.title = "Sign In"
+            
+            // Add navigation bar with close button
+            let navController = UINavigationController(rootViewController: popupVC)
+            self.popupNavigationController = navController
+            
+            let closeButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closePopup))
+            popupVC.navigationItem.leftBarButtonItem = closeButton
+            
+            // Present the popup
+            if let rootVC = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first(where: \.isKeyWindow)?.rootViewController {
+                rootVC.present(navController, animated: true) {
+                    if let url = navigationAction.request.url {
+                        popupWebView.load(URLRequest(url: url))
+                    }
+                }
             }
-            return nil
+            
+            return popupWebView
+        }
+        
+        @objc private func closePopup() {
+            popupNavigationController?.dismiss(animated: true) { [weak self] in
+                self?.popupWebView = nil
+                self?.popupNavigationController = nil
+            }
+        }
+        
+        func webViewDidClose(_ webView: WKWebView) {
+            // Called when the popup closes itself (e.g., after successful auth)
+            if webView === popupWebView {
+                popupNavigationController?.dismiss(animated: true) { [weak self] in
+                    self?.popupWebView = nil
+                    self?.popupNavigationController = nil
+                }
+            }
         }
         
         func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
