@@ -403,9 +403,9 @@
 		};
 /* End XCBuildConfiguration section */
 
-/* Begin XCBuildConfigurationList section */
+/* Begin XCConfigurationList section */
 		8F0C92532E2822C00043A6D9 /* Build configuration list for PBXProject "Monochrome" */ = {
-			isa = XCBuildConfigurationList;
+			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F0C92612E2822C30043A6D9 /* Debug */,
 				8F0C92622E2822C30043A6D9 /* Release */,
@@ -414,7 +414,7 @@
 			defaultConfigurationName = Release;
 		};
 		8F0C92632E2822C30043A6D9 /* Build configuration list for PBXNativeTarget "Monochrome" */ = {
-			isa = XCBuildConfigurationList;
+			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F0C92642E2822C30043A6D9 /* Debug */,
 				8F0C92652E2822C30043A6D9 /* Release */,
@@ -422,7 +422,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-/* End XCBuildConfigurationList section */
+/* End XCConfigurationList section */
 	};
 	rootObject = 8F0C92502E2822C00043A6D9 /* Project object */;
 }
