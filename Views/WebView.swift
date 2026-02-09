@@ -8,14 +8,16 @@ import UniformTypeIdentifiers
 class WebViewStore: ObservableObject {
     let webView: WKWebView
 
-    init() {
-        let configuration = WKWebViewConfiguration()
-        // Allow popups by enabling JavaScript and allowing window open
-        configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
-        configuration.allowsInlineMediaPlayback = true
-        configuration.mediaTypesRequiringUserActionForPlayback = []
-        self.webView = WKWebView(frame: .zero, configuration: configuration)
-    }
+        init() {
+            let configuration = WKWebViewConfiguration()
+            // Allow popups by enabling JavaScript and allowing window open
+            configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+            configuration.allowsInlineMediaPlayback = true
+            configuration.mediaTypesRequiringUserActionForPlayback = []
+            self.webView = WKWebView(frame: .zero, configuration: configuration)
+            // Use Safari user agent to bypass OAuth restrictions
+            self.webView.customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
+        }
 }
 
 struct WebView: UIViewRepresentable {
@@ -82,7 +84,7 @@ struct WebView: UIViewRepresentable {
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             if let url = navigationAction.request.url {
                 // Check if this is the popup returning to app domain (auth complete)
-                if webView === popupWebView {
+                if let popup = popupWebView, webView === popup {
                     let context = SWVContext.shared
                     if let host = url.host, host == context.host {
                         // Auth complete - close popup and load in main webview
@@ -91,7 +93,7 @@ struct WebView: UIViewRepresentable {
                         decisionHandler(.cancel)
                         return
                     }
-                    // Allow all navigation within popup (for Firebase Auth to Google, etc.)
+                    // Allow all navigation within popup
                     decisionHandler(.allow)
                     return
                 }
@@ -129,30 +131,28 @@ struct WebView: UIViewRepresentable {
         private var popupNavigationController: UINavigationController?
         
         func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-            // Create a new webview for the popup (required for Firebase Auth)
+            guard let url = navigationAction.request.url else { return nil }
+            
+            // Create popup webview with Safari user agent for OAuth compatibility
             let popupWebView = WKWebView(frame: .zero, configuration: configuration)
             popupWebView.navigationDelegate = self
             popupWebView.uiDelegate = self
+            popupWebView.customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
             self.popupWebView = popupWebView
             
-            // Create a view controller to host the popup
             let popupVC = UIViewController()
             popupVC.view = popupWebView
             popupVC.title = "Sign In"
             
-            // Add navigation bar with close button
             let navController = UINavigationController(rootViewController: popupVC)
             self.popupNavigationController = navController
             
             let closeButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closePopup))
             popupVC.navigationItem.leftBarButtonItem = closeButton
             
-            // Present the popup
             if let rootVC = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first(where: \.isKeyWindow)?.rootViewController {
                 rootVC.present(navController, animated: true) {
-                    if let url = navigationAction.request.url {
-                        popupWebView.load(URLRequest(url: url))
-                    }
+                    popupWebView.load(URLRequest(url: url))
                 }
             }
             
@@ -167,7 +167,6 @@ struct WebView: UIViewRepresentable {
         }
         
         func webViewDidClose(_ webView: WKWebView) {
-            // Called when the popup closes itself (e.g., after successful auth)
             if webView === popupWebView {
                 popupNavigationController?.dismiss(animated: true) { [weak self] in
                     self?.popupWebView = nil
