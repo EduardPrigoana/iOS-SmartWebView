@@ -82,35 +82,44 @@ struct WebView: UIViewRepresentable {
         }
         
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            if let url = navigationAction.request.url {
-                // Check if this is the popup returning to app domain (auth complete)
-                if let popup = popupWebView, webView === popup {
-                    let context = SWVContext.shared
-                    let urlString = url.absoluteString
-                    
-                    // Check if navigation is back to app domain or contains auth callback params
-                    let isBackToApp = (url.host == context.host) || 
-                                     urlString.contains("__/auth/") || 
-                                     urlString.contains("firebaseapp.com/__/auth")
-                    
-                    if isBackToApp {
-                        // Auth complete - close popup
-                        closePopup()
-                        // Reload main webview to pick up auth state
-                        self.webView.reload()
-                        decisionHandler(.cancel)
-                        return
-                    }
-                    // Allow all navigation within popup
-                    decisionHandler(.allow)
-                    return
-                }
+            guard let url = navigationAction.request.url else {
+                decisionHandler(.allow)
+                return
+            }
+            
+            // Check if this is the popup returning to app domain (auth complete)
+            if let popup = self.popupWebView, webView == popup {
+                let context = SWVContext.shared
+                let urlString = url.absoluteString
                 
-                if URLHandler.handle(url: url, webView: webView) {
+                // Check if navigation is back to app domain or contains auth callback params
+                let popupHost = url.host ?? ""
+                let isBackToApp = (popupHost == context.host) || 
+                                 urlString.contains("__/auth/") || 
+                                 urlString.contains("firebaseapp.com/__/auth")
+                
+                if isBackToApp {
+                    // Auth complete - dismiss popup and reload main webview
+                    DispatchQueue.main.async { [weak self] in
+                        self?.popupNavigationController?.dismiss(animated: true) {
+                            self?.popupWebView = nil
+                            self?.popupNavigationController = nil
+                        }
+                        self?.webView.reload()
+                    }
                     decisionHandler(.cancel)
                     return
                 }
+                // Allow all navigation within popup
+                decisionHandler(.allow)
+                return
             }
+            
+            if URLHandler.handle(url: url, webView: webView) {
+                decisionHandler(.cancel)
+                return
+            }
+            
             decisionHandler(.allow)
         }
         
