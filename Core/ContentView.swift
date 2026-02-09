@@ -10,9 +10,6 @@ struct ContentView: View {
         ZStack {
             if let url = initialURL {
                 WebView(url: url)
-                    // This makes the WebView ignore the safe areas (like the notch),
-                    // allowing it to fill the entire screen for an immersive experience.
-                    .ignoresSafeArea()
             } else {
                 // Fallback view if the initial URL couldn't be determined.
                 // This might happen if swv.properties is malformed.
