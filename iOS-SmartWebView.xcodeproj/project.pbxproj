@@ -20,7 +20,6 @@
 		8F0C92912E28D5B70043A6D9 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92902E28D5B70043A6D9 /* PermissionManager.swift */; };
 		8F0C92932E28D70A0043A6D9 /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92922E28D70A0043A6D9 /* Playground.swift */; };
 		8F7E7BDA2E340B77002848D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7E7BD92E340B77002848D5 /* AppDelegate.swift */; };
-		8F7E7BE52E341412002848D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F7E7BE42E341412002848D5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +39,6 @@
 		8F7E7BD92E340B77002848D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F7E7BE12E34107B002848D5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8F7E7BE32E3411EB002848D5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		8F7E7BE42E341412002848D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F7E7BE62E34F09F002848D5 /* iOS-SmartWebView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "iOS-SmartWebView-Info.plist"; sourceTree = "<group>"; };
 		8F7E7BEB2E356644002848D5 /* iOS-SmartWebView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS-SmartWebView.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,7 +121,6 @@
 		8F0C92712E2838200043A6D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8F7E7BE42E341412002848D5 /* GoogleService-Info.plist */,
 				8F7E7BD22E340264002848D5 /* web */,
 				8F0C927F2E283A1B0043A6D9 /* swv.properties */,
 			);
@@ -201,7 +198,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F7E7BE52E341412002848D5 /* GoogleService-Info.plist in Resources */,
 				8F0C92802E283A1B0043A6D9 /* swv.properties in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
