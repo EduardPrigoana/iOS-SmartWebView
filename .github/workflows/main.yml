@@ -12,7 +12,7 @@ jobs:
       - name: Build .ipa without signing
         run: |
           xcodebuild -project iOS-SmartWebView.xcodeproj \
-            -scheme YourScheme \
+            -scheme iOS-SmartWebView \
             -configuration Release \
             -archivePath $PWD/build/iOS-SmartWebView.xcarchive \
             CODE_SIGNING_ALLOWED=NO \
