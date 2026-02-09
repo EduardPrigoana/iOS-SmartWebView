@@ -14,11 +14,8 @@
 		8F0C92802E283A1B0043A6D9 /* swv.properties in Resources */ = {isa = PBXBuildFile; fileRef = 8F0C927F2E283A1B0043A6D9 /* swv.properties */; };
 		8F0C92822E283A340043A6D9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92812E283A340043A6D9 /* WebView.swift */; };
 		8F0C92872E283B7C0043A6D9 /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92862E283B7C0043A6D9 /* PluginManager.swift */; };
-		8F0C92892E283BA60043A6D9 /* PluginInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92882E283BA60043A6D9 /* PluginInterface.swift */; };
-		8F0C928B2E283C090043A6D9 /* ToastPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C928A2E283C090043A6D9 /* ToastPlugin.swift */; };
 		8F0C928F2E28D5960043A6D9 /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C928E2E28D5960043A6D9 /* URLHandler.swift */; };
 		8F0C92912E28D5B70043A6D9 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92902E28D5B70043A6D9 /* PermissionManager.swift */; };
-		8F0C92932E28D70A0043A6D9 /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92922E28D70A0043A6D9 /* Playground.swift */; };
 		8F7E7BDA2E340B77002848D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7E7BD92E340B77002848D5 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,11 +28,8 @@
 		8F0C927F2E283A1B0043A6D9 /* swv.properties */ = {isa = PBXFileReference; lastKnownFileType = text; path = swv.properties; sourceTree = "<group>"; };
 		8F0C92812E283A340043A6D9 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		8F0C92862E283B7C0043A6D9 /* PluginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginManager.swift; sourceTree = "<group>"; };
-		8F0C92882E283BA60043A6D9 /* PluginInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginInterface.swift; sourceTree = "<group>"; };
-		8F0C928A2E283C090043A6D9 /* ToastPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPlugin.swift; sourceTree = "<group>"; };
 		8F0C928E2E28D5960043A6D9 /* URLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandler.swift; sourceTree = "<group>"; };
 		8F0C92902E28D5B70043A6D9 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
-		8F0C92922E28D70A0043A6D9 /* Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground.swift; sourceTree = "<group>"; };
 		8F7E7BD92E340B77002848D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F7E7BE12E34107B002848D5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8F7E7BE32E3411EB002848D5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -71,7 +65,6 @@
 				8F7E7BE32E3411EB002848D5 /* .gitignore */,
 				8F0C92722E2838290043A6D9 /* Views */,
 				8F0C92712E2838200043A6D9 /* Resources */,
-				8F0C92702E2838170043A6D9 /* Plugins */,
 				8F0C926F2E2838070043A6D9 /* Managers */,
 				8F0C926E2E2837FF0043A6D9 /* Core */,
 				8F0C92592E2822C00043A6D9 /* Products */,
@@ -106,16 +99,6 @@
 				8F0C928E2E28D5960043A6D9 /* URLHandler.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		8F0C92702E2838170043A6D9 /* Plugins */ = {
-			isa = PBXGroup;
-			children = (
-				8F0C92882E283BA60043A6D9 /* PluginInterface.swift */,
-				8F0C928A2E283C090043A6D9 /* ToastPlugin.swift */,
-				8F0C92922E28D70A0043A6D9 /* Playground.swift */,
-			);
-			path = Plugins;
 			sourceTree = "<group>";
 		};
 		8F0C92712E2838200043A6D9 /* Resources */ = {
@@ -209,17 +192,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F0C92892E283BA60043A6D9 /* PluginInterface.swift in Sources */,
 				8F0C92792E2839ED0043A6D9 /* SWVContext.swift in Sources */,
 				8F0C92822E283A340043A6D9 /* WebView.swift in Sources */,
 				8F7E7BDA2E340B77002848D5 /* AppDelegate.swift in Sources */,
-				8F0C92932E28D70A0043A6D9 /* Playground.swift in Sources */,
 				8F0C92872E283B7C0043A6D9 /* PluginManager.swift in Sources */,
 				8F0C927D2E283A080043A6D9 /* iOS_SmartWebViewApp.swift in Sources */,
 				8F0C928F2E28D5960043A6D9 /* URLHandler.swift in Sources */,
 				8F0C92912E28D5B70043A6D9 /* PermissionManager.swift in Sources */,
 				8F0C927E2E283A080043A6D9 /* ContentView.swift in Sources */,
-				8F0C928B2E283C090043A6D9 /* ToastPlugin.swift in Sources */,
 				8F0C927A2E2839ED0043A6D9 /* ConfigLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,7 +340,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-SmartWebView-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Smart WebView";
+				INFOPLIST_KEY_CFBundleDisplayName = "monochrome";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to let you take and upload photos or videos.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide location-based features and content.";
@@ -375,7 +355,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mgks.os.swv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -399,7 +379,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-SmartWebView-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Smart WebView";
+				INFOPLIST_KEY_CFBundleDisplayName = "monochrome";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to let you take and upload photos or videos.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide location-based features and content.";
@@ -414,7 +394,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mgks.os.swv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

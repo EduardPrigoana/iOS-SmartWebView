@@ -7,7 +7,6 @@ struct iOS_SmartWebViewApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     init() {
-        registerPlugins()
         PermissionManager.shared.requestInitialPermissions()
     }
     
@@ -15,12 +14,5 @@ struct iOS_SmartWebViewApp: App {
         WindowGroup {
             ContentView()
         }
-    }
-    
-    private func registerPlugins() {
-        let context = SWVContext.shared
-        
-        if context.enabledPlugins.contains("Toast") { ToastPlugin.register() }
-        if context.enabledPlugins.contains("Playground") { Playground.register() }
     }
 }

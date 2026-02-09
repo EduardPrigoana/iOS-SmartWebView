@@ -10,7 +10,10 @@ class WebViewStore: ObservableObject {
 
     init() {
         let configuration = WKWebViewConfiguration()
-        // We will add the userContentController configuration within the Coordinator
+        // Allow popups by enabling JavaScript and allowing window open
+        configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        configuration.allowsInlineMediaPlayback = true
+        configuration.mediaTypesRequiringUserActionForPlayback = []
         self.webView = WKWebView(frame: .zero, configuration: configuration)
     }
 }
@@ -31,9 +34,6 @@ struct WebView: UIViewRepresentable {
         // The coordinator is now the single source of all delegates.
         webView.navigationDelegate = context.coordinator
         webView.uiDelegate = context.coordinator
-        
-        // Initialize all registered plugins, passing them the webview instance.
-        PluginManager.shared.initializePlugins(context: SWVContext.shared, webView: webView)
         
         if SWVContext.shared.pullToRefreshEnabled {
             let refreshControl = UIRefreshControl()
@@ -65,14 +65,6 @@ struct WebView: UIViewRepresentable {
             self.parent = parent
             self.webView = webView
             super.init()
-            
-            // Add message handlers here in the coordinator's init.
-            // This guarantees they are ready before any JS can call them.
-            let swvContext = SWVContext.shared
-            let userContentController = self.webView.configuration.userContentController
-            if swvContext.enabledPlugins.contains("Toast") { userContentController.add(self, name: "toast") }
-            if swvContext.enabledPlugins.contains("Dialog") { userContentController.add(self, name: "dialog") }
-            if swvContext.enabledPlugins.contains("Location") { userContentController.add(self, name: "location") }
         }
         
         // --- DELEGATE METHODS ---
@@ -85,11 +77,6 @@ struct WebView: UIViewRepresentable {
             // Call our platform detection script
             let script = "if (typeof setPlatform === 'function') { setPlatform('ios'); }"
             webView.evaluateJavaScript(script, completionHandler: nil)
-
-            // Notify plugins that the page has loaded
-            if let url = webView.url {
-                PluginManager.shared.webViewDidFinishLoad(url: url)
-            }
         }
         
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -113,11 +100,54 @@ struct WebView: UIViewRepresentable {
         }
         
         func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-            PluginManager.shared.handleScriptMessage(message: message)
+            // Handle script messages if needed
         }
         
         @objc func handleRefresh() {
             webView.reload()
+        }
+        
+        // MARK: - Popup Support
+        
+        func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+            // Handle popup windows by loading them in the same webview
+            if let url = navigationAction.request.url {
+                webView.load(URLRequest(url: url))
+            }
+            return nil
+        }
+        
+        func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                completionHandler()
+            })
+            present(alert)
+        }
+        
+        func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                completionHandler(true)
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                completionHandler(false)
+            })
+            present(alert)
+        }
+        
+        func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+            let alert = UIAlertController(title: nil, message: prompt, preferredStyle: .alert)
+            alert.addTextField { textField in
+                textField.text = defaultText
+            }
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                completionHandler(alert.textFields?.first?.text)
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                completionHandler(nil)
+            })
+            present(alert)
         }
         
         func webView(_ webView: WKWebView, runOpenPanelWith parameters: WKOpenPanelParameters, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping ([URL]?) -> Void) {
