@@ -38,7 +38,7 @@ jobs:
             )
 
       - name: Upload unsigned .ipa
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: UnsignedApp.ipa
           path: build/ipa
