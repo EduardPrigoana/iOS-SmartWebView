@@ -403,7 +403,7 @@
 		};
 /* End XCBuildConfiguration section */
 
-/* Begin XCConfigurationList section */
+/* Begin XCBuildConfigurationList section */
 		8F0C92532E2822C00043A6D9 /* Build configuration list for PBXProject "Monochrome" */ = {
 			isa = XCBuildConfigurationList;
 			buildConfigurations = (
@@ -422,7 +422,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-/* End XCConfigurationList section */
+/* End XCBuildConfigurationList section */
 	};
 	rootObject = 8F0C92502E2822C00043A6D9 /* Project object */;
 }
