@@ -332,7 +332,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-SmartWebView-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "monochrome";
+				INFOPLIST_KEY_CFBundleDisplayName = "Monochrome";
+				INFOPLIST_KEY_CFBundleName = "Monochrome Music";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to let you take and upload photos or videos.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide location-based features and content.";
@@ -348,7 +349,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mgks.os.swv;
+				PRODUCT_BUNDLE_IDENTIFIER = app.monochrome.music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -371,7 +372,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-SmartWebView-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "monochrome";
+				INFOPLIST_KEY_CFBundleDisplayName = "Monochrome";
+				INFOPLIST_KEY_CFBundleName = "Monochrome Music";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to let you take and upload photos or videos.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide location-based features and content.";
@@ -387,7 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mgks.os.swv;
+				PRODUCT_BUNDLE_IDENTIFIER = app.monochrome.music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

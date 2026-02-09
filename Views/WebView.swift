@@ -35,6 +35,10 @@ struct WebView: UIViewRepresentable {
         webView.navigationDelegate = context.coordinator
         webView.uiDelegate = context.coordinator
         
+        // Make WebView stretch to bottom by disabling safe area insets
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
+        webView.scrollView.automaticallyAdjustsScrollIndicatorInsets = false
+        
         if SWVContext.shared.pullToRefreshEnabled {
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(context.coordinator, action: #selector(Coordinator.handleRefresh), for: .valueChanged)
