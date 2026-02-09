@@ -13,9 +13,9 @@ jobs:
         run: |
           # Build archive
           xcodebuild -project iOS-SmartWebView.xcodeproj \
-            -scheme iOS-SmartWebView \
+            -scheme Monochrome \
             -configuration Release \
-            -archivePath build/iOS-SmartWebView.xcarchive \
+            -archivePath build/Monochrome.xcarchive \
             CODE_SIGNING_ALLOWED=NO \
             clean archive
           
@@ -23,15 +23,15 @@ jobs:
           mkdir -p build/ipa/Payload
           
           # Copy .app bundle to Payload
-          cp -r build/iOS-SmartWebView.xcarchive/Products/Applications/iOS-SmartWebView.app build/ipa/Payload/
+          cp -r build/Monochrome.xcarchive/Products/Applications/Monochrome.app build/ipa/Payload/
           
           # Zip the Payload folder to create IPA
           cd build/ipa
-          zip -r iOS-SmartWebView.ipa Payload
+          zip -r Monochrome.ipa Payload
           cd ../..
 
       - name: Upload unsigned .ipa
         uses: actions/upload-artifact@v4
         with:
           name: UnsignedApp.ipa
-          path: build/ipa/iOS-SmartWebView.ipa
+          path: build/ipa/Monochrome.ipa

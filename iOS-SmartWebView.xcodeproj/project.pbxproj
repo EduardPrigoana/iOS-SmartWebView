@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8F0C92792E2839ED0043A6D9 /* SWVContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92782E2839ED0043A6D9 /* SWVContext.swift */; };
 		8F0C927A2E2839ED0043A6D9 /* ConfigLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92772E2839ED0043A6D9 /* ConfigLoader.swift */; };
-		8F0C927D2E283A080043A6D9 /* iOS_SmartWebViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C927C2E283A080043A6D9 /* iOS_SmartWebViewApp.swift */; };
+		8F0C927D2E283A080043A6D9 /* MonochromeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C927C2E283A080043A6D9 /* MonochromeApp.swift */; };
 		8F0C927E2E283A080043A6D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C927B2E283A080043A6D9 /* ContentView.swift */; };
 		8F0C92802E283A1B0043A6D9 /* swv.properties in Resources */ = {isa = PBXBuildFile; fileRef = 8F0C927F2E283A1B0043A6D9 /* swv.properties */; };
 		8F0C92822E283A340043A6D9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92812E283A340043A6D9 /* WebView.swift */; };
@@ -19,19 +19,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8F0C92582E2822C00043A6D9 /* iOS-SmartWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-SmartWebView.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F0C92582E2822C00043A6D9 /* Monochrome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Monochrome.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0C92772E2839ED0043A6D9 /* ConfigLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigLoader.swift; sourceTree = "<group>"; };
 		8F0C92782E2839ED0043A6D9 /* SWVContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWVContext.swift; sourceTree = "<group>"; };
 		8F0C927B2E283A080043A6D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		8F0C927C2E283A080043A6D9 /* iOS_SmartWebViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_SmartWebViewApp.swift; sourceTree = "<group>"; };
+		8F0C927C2E283A080043A6D9 /* MonochromeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonochromeApp.swift; sourceTree = "<group>"; };
 		8F0C927F2E283A1B0043A6D9 /* swv.properties */ = {isa = PBXFileReference; lastKnownFileType = text; path = swv.properties; sourceTree = "<group>"; };
 		8F0C92812E283A340043A6D9 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		8F0C928E2E28D5960043A6D9 /* URLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandler.swift; sourceTree = "<group>"; };
 		8F7E7BD92E340B77002848D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F7E7BE12E34107B002848D5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8F7E7BE32E3411EB002848D5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		8F7E7BE62E34F09F002848D5 /* iOS-SmartWebView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "iOS-SmartWebView-Info.plist"; sourceTree = "<group>"; };
-		8F7E7BEB2E356644002848D5 /* iOS-SmartWebView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS-SmartWebView.entitlements"; sourceTree = "<group>"; };
+		8F7E7BE62E34F09F002848D5 /* Monochrome-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Monochrome-Info.plist"; sourceTree = "<group>"; };
+		8F7E7BEB2E356644002848D5 /* Monochrome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Monochrome.entitlements"; sourceTree = "<group>"; };
 		8F7E7BEC2E356645002848D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,8 +57,8 @@
 		8F0C924F2E2822C00043A6D9 = {
 			isa = PBXGroup;
 			children = (
-				8F7E7BEB2E356644002848D5 /* iOS-SmartWebView.entitlements */,
-				8F7E7BE62E34F09F002848D5 /* iOS-SmartWebView-Info.plist */,
+				8F7E7BEB2E356644002848D5 /* Monochrome.entitlements */,
+				8F7E7BE62E34F09F002848D5 /* Monochrome-Info.plist */,
 				8F7E7BE12E34107B002848D5 /* README.md */,
 				8F7E7BE32E3411EB002848D5 /* .gitignore */,
 				8F0C92722E2838290043A6D9 /* Views */,
@@ -72,7 +72,7 @@
 		8F0C92592E2822C00043A6D9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8F0C92582E2822C00043A6D9 /* iOS-SmartWebView.app */,
+				8F0C92582E2822C00043A6D9 /* Monochrome.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,7 +82,7 @@
 			children = (
 				8F0C927B2E283A080043A6D9 /* ContentView.swift */,
 				8F7E7BD92E340B77002848D5 /* AppDelegate.swift */,
-				8F0C927C2E283A080043A6D9 /* iOS_SmartWebViewApp.swift */,
+				8F0C927C2E283A080043A6D9 /* MonochromeApp.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -118,9 +118,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8F0C92572E2822C00043A6D9 /* iOS-SmartWebView */ = {
+		8F0C92572E2822C00043A6D9 /* Monochrome */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F0C92632E2822C30043A6D9 /* Build configuration list for PBXNativeTarget "iOS-SmartWebView" */;
+			buildConfigurationList = 8F0C92632E2822C30043A6D9 /* Build configuration list for PBXNativeTarget "Monochrome" */;
 			buildPhases = (
 				8F0C92542E2822C00043A6D9 /* Sources */,
 				8F0C92552E2822C00043A6D9 /* Frameworks */,
@@ -133,9 +133,9 @@
 			fileSystemSynchronizedGroups = (
 				8F7E7BD22E340264002848D5 /* web */,
 			);
-			name = "iOS-SmartWebView";
-			productName = "iOS-SmartWebView";
-			productReference = 8F0C92582E2822C00043A6D9 /* iOS-SmartWebView.app */;
+			name = "Monochrome";
+			productName = "Monochrome";
+			productReference = 8F0C92582E2822C00043A6D9 /* Monochrome.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -154,7 +154,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8F0C92532E2822C00043A6D9 /* Build configuration list for PBXProject "iOS-SmartWebView" */;
+			buildConfigurationList = 8F0C92532E2822C00043A6D9 /* Build configuration list for PBXProject "Monochrome" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -168,7 +168,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8F0C92572E2822C00043A6D9 /* iOS-SmartWebView */,
+				8F0C92572E2822C00043A6D9 /* Monochrome */,
 			);
 		};
 /* End PBXProject section */
@@ -193,7 +193,7 @@
 				8F0C92792E2839ED0043A6D9 /* SWVContext.swift in Sources */,
 				8F0C92822E283A340043A6D9 /* WebView.swift in Sources */,
 				8F7E7BDA2E340B77002848D5 /* AppDelegate.swift in Sources */,
-				8F0C927D2E283A080043A6D9 /* iOS_SmartWebViewApp.swift in Sources */,
+				8F0C927D2E283A080043A6D9 /* MonochromeApp.swift in Sources */,
 				8F0C928F2E28D5960043A6D9 /* URLHandler.swift in Sources */,
 				8F0C927E2E283A080043A6D9 /* ContentView.swift in Sources */,
 				8F0C927A2E2839ED0043A6D9 /* ConfigLoader.swift in Sources */,
@@ -329,13 +329,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "iOS-SmartWebView.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Monochrome.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HW5SN674F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS-SmartWebView-Info.plist";
+				INFOPLIST_FILE = "Monochrome-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Monochrome";
 				INFOPLIST_KEY_CFBundleName = "Monochrome Music";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
@@ -369,13 +369,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "iOS-SmartWebView.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Monochrome.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HW5SN674F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "iOS-SmartWebView-Info.plist";
+				INFOPLIST_FILE = "Monochrome-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Monochrome";
 				INFOPLIST_KEY_CFBundleName = "Monochrome Music";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
@@ -404,8 +404,8 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8F0C92532E2822C00043A6D9 /* Build configuration list for PBXProject "iOS-SmartWebView" */ = {
-			isa = XCConfigurationList;
+		8F0C92532E2822C00043A6D9 /* Build configuration list for PBXProject "Monochrome" */ = {
+			isa = XCBuildConfigurationList;
 			buildConfigurations = (
 				8F0C92612E2822C30043A6D9 /* Debug */,
 				8F0C92622E2822C30043A6D9 /* Release */,
@@ -413,7 +413,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F0C92632E2822C30043A6D9 /* Build configuration list for PBXNativeTarget "iOS-SmartWebView" */ = {
+		8F0C92632E2822C30043A6D9 /* Build configuration list for PBXNativeTarget "Monochrome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8F0C92642E2822C30043A6D9 /* Debug */,

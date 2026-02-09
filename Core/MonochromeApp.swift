@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct iOS_SmartWebViewApp: App {
+struct MonochromeApp: App {
     
     // This connects our AppDelegate to the SwiftUI app lifecycle.
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
