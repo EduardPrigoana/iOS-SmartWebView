@@ -91,6 +91,9 @@ struct WebView: UIViewRepresentable {
                         decisionHandler(.cancel)
                         return
                     }
+                    // Allow all navigation within popup (for Firebase Auth to Google, etc.)
+                    decisionHandler(.allow)
+                    return
                 }
                 
                 if URLHandler.handle(url: url, webView: webView) {

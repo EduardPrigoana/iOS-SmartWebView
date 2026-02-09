@@ -5,6 +5,9 @@
 ## User settings
 xcuserdata/
 
+## Monochrome Source Code
+monochrome-main/
+
 ## Obj-C/Swift specific
 *.hmap
 
