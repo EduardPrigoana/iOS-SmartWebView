@@ -19,14 +19,10 @@
 		8F0C928F2E28D5960043A6D9 /* URLHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C928E2E28D5960043A6D9 /* URLHandler.swift */; };
 		8F0C92912E28D5B70043A6D9 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92902E28D5B70043A6D9 /* PermissionManager.swift */; };
 		8F0C92932E28D70A0043A6D9 /* Playground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92922E28D70A0043A6D9 /* Playground.swift */; };
-		8F0C92952E2976060043A6D9 /* DialogPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92942E2976060043A6D9 /* DialogPlugin.swift */; };
-		8F0C92972E29763F0043A6D9 /* LocationPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92962E29763F0043A6D9 /* LocationPlugin.swift */; };
-		8F0C92992E2976810043A6D9 /* RatingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0C92982E2976810043A6D9 /* RatingPlugin.swift */; };
 		8F7E7BDA2E340B77002848D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7E7BD92E340B77002848D5 /* AppDelegate.swift */; };
 		8F7E7BDD2E340CB0002848D5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8F7E7BDC2E340CB0002848D5 /* FirebaseAuth */; };
 		8F7E7BDF2E340CB0002848D5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8F7E7BDE2E340CB0002848D5 /* FirebaseMessaging */; };
 		8F7E7BE52E341412002848D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F7E7BE42E341412002848D5 /* GoogleService-Info.plist */; };
-		8F7E7BEA2E34F228002848D5 /* FirebasePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7E7BE92E34F228002848D5 /* FirebasePlugin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,16 +39,12 @@
 		8F0C928E2E28D5960043A6D9 /* URLHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHandler.swift; sourceTree = "<group>"; };
 		8F0C92902E28D5B70043A6D9 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		8F0C92922E28D70A0043A6D9 /* Playground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playground.swift; sourceTree = "<group>"; };
-		8F0C92942E2976060043A6D9 /* DialogPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPlugin.swift; sourceTree = "<group>"; };
-		8F0C92962E29763F0043A6D9 /* LocationPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPlugin.swift; sourceTree = "<group>"; };
-		8F0C92982E2976810043A6D9 /* RatingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingPlugin.swift; sourceTree = "<group>"; };
 		8F7E7BD12E34021A002848D5 /* ProjectOverview.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ProjectOverview.md; sourceTree = "<group>"; };
 		8F7E7BD92E340B77002848D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F7E7BE12E34107B002848D5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8F7E7BE32E3411EB002848D5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8F7E7BE42E341412002848D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F7E7BE62E34F09F002848D5 /* iOS-SmartWebView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "iOS-SmartWebView-Info.plist"; sourceTree = "<group>"; };
-		8F7E7BE92E34F228002848D5 /* FirebasePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePlugin.swift; sourceTree = "<group>"; };
 		8F7E7BEB2E356644002848D5 /* iOS-SmartWebView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS-SmartWebView.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,10 +122,6 @@
 				8F0C92882E283BA60043A6D9 /* PluginInterface.swift */,
 				8F0C928A2E283C090043A6D9 /* ToastPlugin.swift */,
 				8F0C92922E28D70A0043A6D9 /* Playground.swift */,
-				8F0C92982E2976810043A6D9 /* RatingPlugin.swift */,
-				8F0C92962E29763F0043A6D9 /* LocationPlugin.swift */,
-				8F0C92942E2976060043A6D9 /* DialogPlugin.swift */,
-				8F7E7BE92E34F228002848D5 /* FirebasePlugin.swift */,
 			);
 			path = Plugins;
 			sourceTree = "<group>";
@@ -247,13 +235,9 @@
 				8F0C927D2E283A080043A6D9 /* iOS_SmartWebViewApp.swift in Sources */,
 				8F0C928F2E28D5960043A6D9 /* URLHandler.swift in Sources */,
 				8F0C92912E28D5B70043A6D9 /* PermissionManager.swift in Sources */,
-				8F0C92972E29763F0043A6D9 /* LocationPlugin.swift in Sources */,
-				8F0C92952E2976060043A6D9 /* DialogPlugin.swift in Sources */,
 				8F0C927E2E283A080043A6D9 /* ContentView.swift in Sources */,
 				8F0C928B2E283C090043A6D9 /* ToastPlugin.swift in Sources */,
 				8F0C927A2E2839ED0043A6D9 /* ConfigLoader.swift in Sources */,
-				8F0C92992E2976810043A6D9 /* RatingPlugin.swift in Sources */,
-				8F7E7BEA2E34F228002848D5 /* FirebasePlugin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
