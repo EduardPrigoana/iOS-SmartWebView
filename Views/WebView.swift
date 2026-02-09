@@ -86,10 +86,18 @@ struct WebView: UIViewRepresentable {
                 // Check if this is the popup returning to app domain (auth complete)
                 if let popup = popupWebView, webView === popup {
                     let context = SWVContext.shared
-                    if let host = url.host, host == context.host {
-                        // Auth complete - close popup and load in main webview
+                    let urlString = url.absoluteString
+                    
+                    // Check if navigation is back to app domain or contains auth callback params
+                    let isBackToApp = (url.host == context.host) || 
+                                     urlString.contains("__/auth/") || 
+                                     urlString.contains("firebaseapp.com/__/auth")
+                    
+                    if isBackToApp {
+                        // Auth complete - close popup
                         closePopup()
-                        self.webView.load(URLRequest(url: url))
+                        // Reload main webview to pick up auth state
+                        self.webView.reload()
                         decisionHandler(.cancel)
                         return
                     }
